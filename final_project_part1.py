@@ -57,7 +57,7 @@ def dijkstra(G, source):
                 pred[neighbour] = current_node
     return dist
 
-def dijkstra__approx(G, source, k):
+def dijkstra_approx(G, source, k):
     pred = {}
     dist = {}    
     Q = min_heap.MinHeap([])

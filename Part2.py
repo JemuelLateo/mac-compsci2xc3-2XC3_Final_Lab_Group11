@@ -1,4 +1,6 @@
+from final_project_part1 import DirectedWeightedGraph
 import min_heap
+
 
 def reconstruct_path(pred, s, d):
     if s == d:

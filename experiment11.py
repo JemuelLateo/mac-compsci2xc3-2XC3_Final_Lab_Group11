@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mtick
 import random 
 
 from tqdm import tqdm
@@ -18,7 +19,7 @@ def accuracy(approx_dist, exact_dist):
 
 
 num_nodes = 50
-num_edges = 90
+num_edges = 100 #didn't use since we made complete graphs
 max_weight = 100
 k_values = [i for i in range(0,20)]
 trials = 50
@@ -49,13 +50,17 @@ for k in tqdm(k_values):
 print(f"dikstra_accuracy: {dijkstra_accuracy}")
 print(f"belman_accuracyu: {bellman_accuracy}")
 
+plt.figure(figsize=(10, 6))
 plt.plot(k_values, dijkstra_accuracy, label="Dijkstra Approx", marker='o')
 plt.plot(k_values, bellman_accuracy, label="Bellman-Ford Approx", marker='s')
 plt.xlabel("k (max relaxations)")
-plt.ylabel("Average Accuracy (fraction of correct shortest paths)")
-plt.title(f"Accuracy vs k (averaged over {trials} graphs, {num_nodes} nodes)")
+plt.ylabel("Average Accuracy (%)")
+plt.title("Accuracy vs k relaxation with complete graph")
+ax = plt.gca()
+ax.yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
 plt.legend()
 plt.xticks(k_values)
-plt.ylim(0, 1.1)
-plt.grid(True)
+plt.ylim(0, 1.1) 
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.savefig("img/experiment11.png")
 plt.show()

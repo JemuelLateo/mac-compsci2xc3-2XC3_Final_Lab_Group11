@@ -19,11 +19,12 @@ def accuracy(approx_dist, exact_dist):
 
 
 num_nodes = 50
-num_edges = 100 #didn't use since we made complete graphs
 max_weight = 100
 k_values = [i for i in range(0,20)]
 trials = 50
 source = 0
+
+graphs = [create_random_complete_graph(num_nodes, max_weight) for _ in range(trials)]
 
 dijkstra_accuracy = []
 bellman_accuracy = []
@@ -32,8 +33,7 @@ for k in tqdm(k_values):
     avg_b = 0
     avg_d = 0
 
-    for _ in range(trials):
-        G = create_random_complete_graph(num_nodes, max_weight)
+    for G in graphs:
 
         approx_d = dijkstra_approx(G, source, k)
         approx_b = bellman_ford_approx(G, source, k)

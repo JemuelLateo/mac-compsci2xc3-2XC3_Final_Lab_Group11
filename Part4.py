@@ -1,6 +1,6 @@
 from final_project_part1 import DirectedWeightedGraph, dijkstra, bellman_ford
+from Part2 import a_star
 from Part3 import (
-    a_star,
     load_stations,
     load_connections,
     build_london_graph,
@@ -47,7 +47,7 @@ class HeuristicGraph(WeightedGraph):
         graph.weights = base_graph.weights
         graph.set_heuristic(heuristic)
 
-        # 方便以后扩展 / 写报告时用
+
         graph.stations = stations
         graph.connections = connections
         graph.destination = destination

@@ -17,6 +17,8 @@ approx_bellman_times = []
 exact_dijkstra_times = []
 exact_bellman_times = []
 
+# this was added to allocate memory and cache before hand 
+# or else the first iteration of the loop will take significantly longer than normal
 for G in graphs:
     dijkstra(G, source)
     bellman_ford(G, source)
